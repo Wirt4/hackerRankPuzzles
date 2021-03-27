@@ -6,5 +6,8 @@ The exercises covered are as follows
 Fibonacci Numbers
 https://www.hackerrank.com/challenges/ctci-fibonacci-numbers/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=recursion-backtracking
 
-Decibinary Numbers
+Decibinary Numbers<in progress>
 https://www.hackerrank.com/challenges/decibinary-numbers/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming
+
+Cycle Detection
+https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
