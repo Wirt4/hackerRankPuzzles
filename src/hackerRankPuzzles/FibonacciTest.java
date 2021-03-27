@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class FibonacciTest {
-	Fibonacci fib = new Fibonacci();
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -30,8 +29,19 @@ class FibonacciTest {
 	void testFirstSeven() {
 		int outputs[] = {0, 1, 1, 2, 3, 5, 8 };
 		for (int input=0; input<7; input++) {
-			assertEquals(outputs[input], fib.fibonacci(input));
+			assertEquals(outputs[input], Fibonacci.fibonacci(input));
 		}
+	}
+	@Test
+	void testThreeHundred() {
+		assertEquals(832040, Fibonacci.fibonacci(30));
+	}
+	@Test
+	void testOutOfRange() {
+		assertEquals(-1, Fibonacci.fibonacci(31));
+		assertEquals(-1, Fibonacci.fibonacci(100));
+		assertEquals(-1, Fibonacci.fibonacci(-10));
+		assertEquals(-1, Fibonacci.fibonacci(-1));
 	}
 
 }

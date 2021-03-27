@@ -9,6 +9,8 @@ public class Fibonacci {
 		case 1:
 			return 1;
 		default:
+			if (n<0 || n>30)
+				return -1;
 			return fibonacci(n-1) + fibonacci(n-2);
 		}
 	}
