@@ -2,7 +2,7 @@ package hackerRankPuzzles;
 //2021-3-27
 //simple problem but getting used to JUnit workflow
 public class Fibonacci {
-	static int fibonacci(int n) {
+	public static int fibonacci(int n) {
 		switch(n) {
 		case 0:
 			return 0;
