@@ -11,3 +11,6 @@ https://www.hackerrank.com/challenges/decibinary-numbers/problem?h_l=interview&p
 
 Cycle Detection
 https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
+
+Is This a Binary Search Tree
+https://www.hackerrank.com/challenges/is-binary-search-tree/problem
