@@ -1,34 +1,63 @@
 package hackerRankPuzzles;
+
+import java.util.ArrayList;
+
 //working off explanation at https://stackoverflow.com/questions/65139713/how-to-find-the-xth-decibinary-number
 public class DecibinaryNumbers {
+	
+		static int getValue(int[] deciBinary){
+			int sum =0;
+			for (int i=0;i<deciBinary.length; i++) {
+				sum += deciBinary[i]<<i;
+			}
+			return sum;
+		}
+		
+		static int getRep(int[] deciBinary){
+			int sum =0;
+			for (int i=0;i<deciBinary.length; i++) {
+				sum += deciBinary[i]* (int)Math.pow(10, i);
+			}
+			return sum;
+		}
+		
+		static ArrayList<Integer>getAllDBs(int foo){
+			ArrayList<Integer> ans = new ArrayList<Integer>();
+			int[] db = new int[5]; //hasto be a low value, otherwise  runs too hot
+			do {
+				int rep = getValue(db);
+				if (rep==foo)ans.add(getRep(db));
+			}while(iterateSlot(db));
+			return ans;
+		}
+	
 	   static long decibinaryNumbers(long x) {
-		   //TODO: add parameters to makeCount function to accommadate problem size
-		   long [][] count = makeCount(3, 8);
-		   long[] countBelow = makeCountBelow(count);
-		   //Find the first decimal sum
-		   //find each non-zero digit
-		   //determine what each of those non-zero digits are
-	        return -1;
+		   //naieve solution, buid an arraylist of pairs and either look them up or compute as go along
+	      ArrayList<Integer> listy = new ArrayList();
+	      ArrayList<Integer> tempy;
+	      int currentDecimal=0;
+	      while (x > listy.size()) {
+	    	  tempy = getAllDBs(currentDecimal);
+	    	  tempy.addAll(0, listy);
+	    	  listy = new ArrayList<Integer>(tempy);
+	    	  currentDecimal++;
+	      }
+		   return listy.get((int)(x-1));
 	    }
 	   
-	   static long[] makeCountBelow(long[][]count) {
-		   //also stubbed for worked example at stack overflow
-		   long[] count_below = {0, 1, 2, 4, 6, 10, 14, 20, 26};
-		   return count_below;
+	   static boolean iterateSlot(int[] deciBinary) {
+		   int carry=1;
+		   for (int i=0; i<deciBinary.length; i++) {
+			   deciBinary[i]  = deciBinary[i] + carry;
+			   carry = deciBinary[i] >9? 1:0;
+			   deciBinary[i] %=10;
+		   }
+		   return carry !=1;
 	   }
-	   
-	   static long[][] makeCount(int digits, int powerLimit){
-		   //stub value, from a worked example at stack overflow
-		  long[][] table = {
-				  {1, 1, 1, 1},
-				  {0, 1, 1, 1},
-				  {0, 1, 2, 2},
-				  {0, 1, 2, 2},
-				  {0, 1, 3, 4},
-				  {0, 1, 3, 4},
-				  {0, 1, 4, 6},
-				  {0, 1, 4, 6}
-		  };
-		  return table;
+	  //makes a table for using with the first n digits and up to the values of 2^ power  - 1
+	   static long[][] makeCountTable(int digits, int power) {
+		   long[][] count = new long[1<< power][digits+1];
+		   count[0][0] = digits <=0 || power<=0 ? -1 :1;
+		   return count;
 	   }
 }
